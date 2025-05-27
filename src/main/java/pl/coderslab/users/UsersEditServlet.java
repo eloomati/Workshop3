@@ -20,12 +20,23 @@ public class UsersEditServlet extends HttpServlet {
         if (userId != null && !userId.isEmpty()){
             try{
                 int id = Integer.parseInt(userId);
-                req.setAttribute("user", userDao.read(id));
+                User user = userDao.read(id);
+                if (user == null) {
+                    req.setAttribute("error", "Użytkownik o podanym ID nie istnieje.");
+                    getServletContext().getRequestDispatcher("/users/list").forward(req, resp);
+                    return;
+                } else {
+                    req.setAttribute("user", user);
+                }
             } catch (NumberFormatException e) {
                 req.setAttribute("error", "Invalid user ID format.");
+                getServletContext().getRequestDispatcher("/users/list").forward(req, resp);
+                return;
             }
         } else {
             req.setAttribute("error", "User ID is required.");
+            getServletContext().getRequestDispatcher("/users/list").forward(req, resp);
+            return;
         }
 
         getServletContext().getRequestDispatcher("/users/edit.jsp").forward(req, resp);
@@ -33,8 +44,24 @@ public class UsersEditServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userId = req.getParameter("id");
+        int id;
         UserDao userDao = new UserDao();
-        int id = Integer.parseInt(req.getParameter("id"));
+
+        if (userId == null || userId.isEmpty()) {
+            req.setAttribute("error", "User ID is empty.");
+            req.getRequestDispatcher("/users/edit.jsp").forward(req, resp);
+            return;
+        }
+
+        try {
+            id = Integer.parseInt(userId);
+        } catch (NumberFormatException e) {
+            req.setAttribute("error", "Invalid user ID format.");
+            req.getRequestDispatcher("/users/edit.jsp").forward(req, resp);
+            return;
+        }
+
         User user = userDao.read(id);
 
         if (user == null) {
