@@ -3,25 +3,72 @@
 
 <%@ include file="header.jsp" %>
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">UsersCRUD</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
 
-          <!-- Content Row -->
-
-          <div class="row">
-
-          </div>
-
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-12">
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4 w-100">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover"  id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nazwa użytkownika</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Akcja</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nazwa użytkownika</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Akcja</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.container-fluid -->
+    </div>
 
-      </div>
-      <!-- End of Main Content -->
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
 
 <%@ include file="footer.jsp" %>
