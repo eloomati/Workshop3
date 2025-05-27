@@ -23,6 +23,13 @@
                     <h6 class="m-0 font-weight-bold text-primary">Dodaj użytkownika</h6>
                 </div>
                 <div class="card-body">
+
+                    <!-- Jeśli pojawił się błąd, wyświetlamy go nad formularzem -->
+                    <c:if test="${not empty error}">
+                        <div class="alert alert-danger">${error}</div>
+                    </c:if>
+
+
                     <div class="table-responsive">
                         <table class="table table-hover"  id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -49,7 +56,7 @@
                                     <td>${user.email}</td>
                                     <td>
                                         <a href="delete?id=${user.id}" class="btn btn-danger btn-sm">Usuń</a>
-                                        <a href="edit?id=${user.id}" class="btn btn-primary btn-sm">Edytuj</a>
+                                        <a href='<c:url value="/users/edit?id=${user.id}" />' class="btn btn-primary btn-sm">Edytuj</a>
                                         <a href="show?id=${user.id}" class="btn btn-info btn-sm">Pokaż</a>
                                     </td>
                                 </tr>

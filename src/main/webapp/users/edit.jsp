@@ -20,7 +20,7 @@
       <!-- DataTales Example -->
       <div class="card shadow mb-4 w-100">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Dodaj użytkownika</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Edycja użytkownika</h6>
         </div>
         <div class="card-body">
 
@@ -29,15 +29,17 @@
             <div class="alert alert-danger">${error}</div>
           </c:if>
 
-          <form class="w-100" action="/users/add" method="post">
+
+          <form class="w-100" action="/users/edit" method="post">
+              <input type="hidden" name="id" value="${user.id}">
             <div class="form-group">
               <label for="userName">Nazwa</label>
-              <input type="text" class="form-control" id="userName" placeholder="Nazwa użytkownika" name="name">
+              <input type="text" class="form-control" id="userName" placeholder="${user.userName}" name="name">
             </div>
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email użytkownika" name="email">
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="${user.email}" name="email">
               <small id="emailHelp" class="form-text text-muted">Twój email jest z nami bezpieczny</small>
             </div>
 
@@ -46,12 +48,7 @@
               <input type="password" class="form-control" id="pass" placeholder="Hasło użytkownika" name="password">
             </div>
 
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="regulamin" name="regulamin" required>
-              <label class="form-check-label" for="regulamin">Akceptuję regulamin</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Zapisz</button>
+            <button type="submit" class="btn btn-primary">Edytuj</button>
           </form>
         </div>
       </div>
