@@ -17,37 +17,39 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
-            <!-- DataTales Example -->
+            <!-- DataTales -->
             <div class="card shadow mb-4 w-100">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Szczegóły użytkownika</h6>
                 </div>
                 <div class="card-body">
 
-                    <!-- Jeśli pojawił się błąd, wyświetlamy go nad formularzem -->
-                    <c:if test="${not empty error}">
-                        <div class="alert alert-danger">${error}</div>
-                    </c:if>
+                    <c:choose>
+                        <c:when test="${not empty error}">
+                            <div class="alert alert-danger">${error}</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Id</th>
+                                        <td>${user.id}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Nazwa użytkownika</th>
+                                        <td>${user.userName}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td>${user.email}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
 
-
-                    <div class="table-responsive">
-                        <table class="table table-hover"  id="dataTable" width="100%" cellspacing="0">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Id</th>
-                                    <td>${user.id}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Nazwa użytkownika</th>
-                                    <td>${user.userName}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Email</th>
-                                    <td>${user.email}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
