@@ -40,6 +40,18 @@
                             </tr>
                             </tfoot>
                             <tbody>
+                            <c:forEach var="user" items="${users}">
+                                <tr>
+                                    <th scope="row">${user.id}</th>
+                                    <td>${user.userName}</td>
+                                    <td>${user.email}</td>
+                                    <td>
+                                        <a href="delete?id=${user.id}" class="btn btn-danger btn-sm">Usuń</a>
+                                        <a href="edit?id=${user.id}" class="btn btn-primary btn-sm">Edytuj</a>
+                                        <a href="show?id=${user.id}" class="btn btn-info btn-sm">Pokaż</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
