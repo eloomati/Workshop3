@@ -57,7 +57,7 @@
                                     <td>
                                         <a href="delete?id=${user.id}" class="btn btn-danger btn-sm">Usuń</a>
                                         <a href='<c:url value="/users/edit?id=${user.id}" />' class="btn btn-primary btn-sm">Edytuj</a>
-                                        <a href="show?id=${user.id}" class="btn btn-info btn-sm">Pokaż</a>
+                                        <a href='<c:url value="/users/show?id=${user.id}" />' class="btn btn-info btn-sm">Pokaż</a>
                                     </td>
                                 </tr>
                             </c:forEach>
