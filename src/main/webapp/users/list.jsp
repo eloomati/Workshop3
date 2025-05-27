@@ -29,6 +29,10 @@
                         <div class="alert alert-danger">${error}</div>
                     </c:if>
 
+                    <!-- Jeśli pojawił się błąd, wyświetlamy go nad formularzem -->
+                    <c:if test="${not empty message}">
+                        <div class="alert-success">${message}</div>
+                    </c:if>
 
                     <div class="table-responsive">
                         <table class="table table-hover"  id="dataTable" width="100%" cellspacing="0">
@@ -50,17 +54,40 @@
                             </tfoot>
                             <tbody>
                             <c:forEach var="user" items="${users}">
-                                <tr>
-                                    <th scope="row">${user.id}</th>
-                                    <td>${user.userName}</td>
-                                    <td>${user.email}</td>
-                                    <td>
-                                        <a href="delete?id=${user.id}" class="btn btn-danger btn-sm">Usuń</a>
-                                        <a href='<c:url value="/users/edit?id=${user.id}" />' class="btn btn-primary btn-sm">Edytuj</a>
-                                        <a href='<c:url value="/users/show?id=${user.id}" />' class="btn btn-info btn-sm">Pokaż</a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                            <tr>
+                                <th scope="row">${user.id}</th>
+                                <td>${user.userName}</td>
+                                <td>${user.email}</td>
+                                <td>
+                                    <!-- Przycisk otwierający modal -->
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${user.id}">
+                                        Usuń
+                                    </button>
+                                    <a href='<c:url value="/users/edit?id=${user.id}" />' class="btn btn-primary btn-sm">Edytuj</a>
+                                    <a href='<c:url value="/users/show?id=${user.id}" />' class="btn btn-info btn-sm">Pokaż</a>
+
+                                    <!-- Modal Bootstrap 4 -->
+                                    <div class="modal fade" id="confirmDeleteModal${user.id}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteLabel${user.id}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirmDeleteLabel${user.id}">Potwierdź usunięcie</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Czy na pewno chcesz usunąć tego użytkownika?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                                                    <a href='<c:url value="/users/delete?id=${user.id}" />' class="btn btn-danger">Usuń</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
